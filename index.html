@@ -5,13 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily News Hub</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
-    header { background: #111; color: #fff; padding: 20px; text-align: center; }
-    main { max-width: 800px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    h2 { color: #333; }
-    .article { border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 10px; }
-    footer { text-align: center; padding: 10px; color: #555; }
-  </style>
+  /* General body styles */
+  body { 
+    font-family: Arial, sans-serif; 
+    background: #f2f2f2; 
+    margin: 0; 
+    padding: 0; 
+  }
+
+  /* Header */
+  header { 
+    background: #111; 
+    color: #fff; 
+    padding: 20px; 
+    text-align: center; 
+  }
+
+  header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+
+  header p {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+  }
+
+  /* Main container */
+  main { 
+    max-width: 900px; 
+    margin: 20px auto; 
+    padding: 10px; 
+  }
+
+  /* Article cards */
+  .article-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+  }
+
+  .article-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    height: auto;
+  }
+
+  .article-card h2 {
+    font-size: 1.5em;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .article-card p {
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .article-card a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .article-card:hover {
+    transform: scale(1.02);
+  }
+
+  /* Footer */
+  footer { 
+    text-align: center; 
+    padding: 15px; 
+    color: #555; 
+    font-size: 0.9em;
+  }
+
+  /* Responsive design */
+  @media screen and (max-width: 600px) {
+    header h1 { font-size: 1.5em; }
+    header p { font-size: 0.9em; }
+    .article-card h2 { font-size: 1.2em; }
+    main { padding: 5px; }
+  }
+</style>
 </head>
 </script
 <div id="news" style="max-width:700px;margin:auto;padding:20px;">
