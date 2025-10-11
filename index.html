@@ -13,7 +13,34 @@
     footer { text-align: center; padding: 10px; color: #555; }
   </style>
 </head>
-<body>
+<div id="news" style="max-width:700px;margin:auto;padding:20px;">
+  <h1>Latest News</h1>
+  <p>Loading...</p>
+</div>
+
+<script>
+async function loadNews() {
+  const container = document.getElementById("news");
+  container.innerHTML = "<p>Loading latest news...</p>";
+  try {
+    const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
+    const data = await res.json();
+    container.innerHTML = "";
+    data.results.slice(0,5).forEach(item=>{
+      const div=document.createElement("div");
+      div.className="article";
+      div.style="margin-bottom:20px;padding:10px;border-bottom:1px solid #ddd;";
+      div.innerHTML=`<h2 style='font-size:18px;color:#333;'>${item.title}</h2>
+                     <p style='color:#555;'>${item.description||""}</p>
+                     <a href="${item.link}" target="_blank" style='color:#007bff;text-decoration:none;'>Read more →</a>`;
+      container.appendChild(div);
+    });
+  } catch(e){
+    container.innerHTML="<p>Could not load news.</p>";
+  }
+}
+loadNews();
+</script><body>
   <header>
     <h1>📰 Daily News Hub</h1>
     <p>Your trusted source for top headlines</p>
