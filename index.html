@@ -10,66 +10,18 @@
 
   <!-- Styles -->
   <style>
-    /* General body styles */
-    body { 
-      font-family: 'Roboto', Arial, sans-serif; 
-      background: #f2f2f2; 
-      margin: 0; 
-      padding: 0; 
-    }
-
-    /* Header */
-    header { 
-      background: #111; 
-      color: #fff; 
-      padding: 20px; 
-      text-align: center; 
-    }
+    body { font-family: 'Roboto', Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
+    header { background: #111; color: #fff; padding: 20px; text-align: center; }
     header h1 { font-size: 2em; margin: 0; }
     header p { margin: 5px 0 0 0; font-size: 1em; }
-
-    /* Main container */
     main { max-width: 900px; margin: 20px auto; padding: 10px; }
-
-    /* Article cards */
-    .article-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 15px;
-      margin-bottom: 20px;
-      transition: transform 0.2s;
-    }
-    .article-card img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      height: auto;
-    }
-    .article-card h2 {
-      font-size: 1.5em;
-      color: #222;
-      margin-bottom: 10px;
-    }
-    .article-card p {
-      color: #555;
-      margin-bottom: 10px;
-    }
-    .article-card a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    .article-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 15px; margin-bottom: 20px; transition: transform 0.2s; }
+    .article-card img { max-width: 100%; border-radius: 8px; margin-bottom: 10px; height: auto; }
+    .article-card h2 { font-size: 1.5em; color: #222; margin-bottom: 10px; }
+    .article-card p { color: #555; margin-bottom: 10px; }
+    .article-card a { color: #007bff; text-decoration: none; font-weight: bold; }
     .article-card:hover { transform: scale(1.02); }
-
-    /* Footer */
-    footer { 
-      text-align: center; 
-      padding: 15px; 
-      color: #555; 
-      font-size: 0.9em;
-    }
-
+    footer { text-align: center; padding: 15px; color: #555; font-size: 0.9em; }
     /* Responsive design */
     @media screen and (max-width: 600px) {
       header h1 { font-size: 1.5em; }
@@ -87,11 +39,29 @@
     <p>Your trusted source for top headlines</p>
   </header>
 
+  <!-- Optional Donation / Affiliate / AdSense Banner -->
+  <div style="text-align:center;margin:20px;">
+    <!-- Buy Me a Coffee Button -->
+    <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank">
+      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee">
+    </a>
+  </div>
+
   <!-- Main content -->
   <main>
     <div id="news">
       <h1 style="text-align:center;color:#222;">Latest News</h1>
       <p style="text-align:center;color:#555;">Automatically loaded from NewsData.io</p>
+    </div>
+
+    <!-- Example AdSense placeholder -->
+    <div style="text-align:center;margin:20px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXX"
+           data-ad-slot="YYYYYYYYYY"
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
@@ -100,33 +70,37 @@
     <p>© 2025 Daily News Hub</p>
   </footer>
 
-  <!-- Live News Script -->
+  <!-- Live News Script with Auto-Refresh -->
   <script>
-  async function loadNews() {
-    const container = document.getElementById("news");
-    container.innerHTML = "<p style='text-align:center;'>Loading latest news...</p>";
-    try {
-      const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
-      const data = await res.json();
-      container.innerHTML = "";
-      data.results.slice(0,5).forEach(item => {
-        const div = document.createElement("div");
-        div.className = "article-card";
-        div.onmouseover = () => div.style.transform = "scale(1.02)";
-        div.onmouseout = () => div.style.transform = "scale(1)";
-        div.innerHTML = `
-          <h2>${item.title}</h2>
-          ${item.image_url ? `<img src="${item.image_url}">` : ""}
-          <p>${item.description || ""}</p>
-          <a href="${item.link}" target="_blank">Read more →</a>
-        `;
-        container.appendChild(div);
-      });
-    } catch(e){
-      container.innerHTML="<p style='text-align:center;color:red;'>Could not load news.</p>";
+    async function loadNews() {
+      const container = document.getElementById("news");
+      container.innerHTML = "<p style='text-align:center;'>Loading latest news...</p>";
+      try {
+        const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
+        const data = await res.json();
+        container.innerHTML = "";
+        data.results.slice(0,5).forEach(item => {
+          const div = document.createElement("div");
+          div.className = "article-card";
+          div.onmouseover = () => div.style.transform = "scale(1.02)";
+          div.onmouseout = () => div.style.transform = "scale(1)";
+          div.innerHTML = `
+            <h2>${item.title}</h2>
+            ${item.image_url ? `<img src="${item.image_url}">` : ""}
+            <p>${item.description || ""}</p>
+            <a href="${item.link}" target="_blank">Read more →</a>
+          `;
+          container.appendChild(div);
+        });
+      } catch(e){
+        container.innerHTML="<p style='text-align:center;color:red;'>Could not load news.</p>";
+      }
     }
-  }
-  loadNews();
+
+    // Initial load
+    loadNews();
+    // Refresh every 5 minutes (300000 ms)
+    setInterval(loadNews, 300000);
   </script>
 
 </body>
