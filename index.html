@@ -22,7 +22,10 @@
     .article-card a { color: #007bff; text-decoration: none; font-weight: bold; }
     .article-card:hover { transform: scale(1.02); }
     footer { text-align: center; padding: 15px; color: #555; font-size: 0.9em; }
-    /* Responsive design */
+    section#about { margin: 30px auto; padding: 20px; background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+    section#about h2 { text-align:center; color:#222; }
+    section#about p { text-align:center; color:#555; font-size:1em; }
+    section#about div { text-align:center; margin-top:15px; }
     @media screen and (max-width: 600px) {
       header h1 { font-size: 1.5em; }
       header p { font-size: 0.9em; }
@@ -39,29 +42,26 @@
     <p>Your trusted source for top headlines</p>
   </header>
 
-  <!-- Optional Donation / Affiliate / AdSense Banner -->
-  <div style="text-align:center;margin:20px;">
-    <!-- Buy Me a Coffee Button -->
-    <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank">
-      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee">
-    </a>
-  </div>
+  <!-- About / Donations Section -->
+  <section id="about">
+    <h2>Support Daily News Hub ☕</h2>
+    <p>
+      Daily News Hub is a free news website that brings you the latest headlines every day.
+      If you enjoy our content and want to support our work, you can <strong>buy us a coffee</strong>!
+      Your donations help keep the site running and allow us to bring you more timely updates.
+    </p>
+    <div>
+      <a href="https://www.buymeacoffee.com/Smaseko-s" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee">
+      </a>
+    </div>
+  </section>
 
   <!-- Main content -->
   <main>
     <div id="news">
       <h1 style="text-align:center;color:#222;">Latest News</h1>
       <p style="text-align:center;color:#555;">Automatically loaded from NewsData.io</p>
-    </div>
-
-    <!-- Example AdSense placeholder -->
-    <div style="text-align:center;margin:20px 0;">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXX"
-           data-ad-slot="YYYYYYYYYY"
-           data-ad-format="auto"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
