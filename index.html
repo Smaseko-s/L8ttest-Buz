@@ -1,74 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daily News Hub</title>
-
-  <!-- ✅ Google AdSense verification -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-5865490092435135">
-
-  <!-- ✅ Google AdSense script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5865490092435135"
-          crossorigin="anonymous"></script>
-
+  <meta name="description" content="Smaseko News – Latest trending news, updates, and global highlights.">
+  <title>Smaseko News</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f6f6f6;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-    header nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 1rem;
-      background: #111;
-    }
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    #news {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 10px;
-    }
-    .article {
-      background: #fff;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .article h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-    .article a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .coffee {
-      text-align: center;
-      margin: 30px 0;
-    }
-    footer {
-      background: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background:#f8f9fa; color:#333; }
+    header { background:#111; color:white; padding:1rem 0; text-align:center; }
+    header h1 { font-size:1.8rem; margin-bottom:0.5rem; }
+    nav { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+    nav a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav a:hover { color:#00b7ff; }
+    main { max-width:900px; margin:40px auto; padding:20px; background:white; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    h2 { color:#007bff; margin-bottom:10px; }
+    .article { margin-bottom:25px; border-bottom:1px solid #eee; padding-bottom:20px; }
+    .article img { width:100%; border-radius:8px; margin-bottom:10px; }
+    .article a { color:#007bff; text-decoration:none; font-weight:bold; }
+    .article a:hover { text-decoration:underline; }
+    footer { text-align:center; margin-top:40px; padding:20px; font-size:0.9em; color:#666; }
   </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5865490092435135" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
+    <h1>Smaseko News</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -76,54 +35,34 @@
     </nav>
   </header>
 
-  <!-- 🔹 Top Ad placeholder -->
-  <div style="text-align:center;margin:15px 0;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5865490092435135"
-         data-ad-slot="0000000000"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
+  <main>
+    <div id="news"><p>Loading latest news...</p></div>
+  </main>
 
-  <section id="news"></section>
-
-  <!-- 🔹 Donate Section -->
-  <div class="coffee">
-    <h3>Support the site ❤️</h3>
-    <a href="https://www.buymeacoffee.com/smaseko-s" target="_blank">
-      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-           alt="Buy Me A Coffee" width="200">
-    </a>
-  </div>
-
-  <footer>© 2025 Smaseko-s News Hub</footer>
+  <footer>
+    © 2025 Smaseko News | Built by Smaseko-s
+  </footer>
 
   <script>
-    async function loadNews() {
-      const container = document.getElementById("news");
-      container.innerHTML = "<p>Loading latest news...</p>";
-      try {
-        const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
-        const data = await res.json();
-        container.innerHTML = "";
-        data.results.slice(0, 5).forEach(item => {
-          const div = document.createElement("div");
-          div.className = "article";
-          div.innerHTML = `
-            <h2>${item.title}</h2>
-            <p>${item.description || ""}</p>
-            <a href="${item.link}" target="_blank">Read more →</a>
-          `;
-          container.appendChild(div);
-        });
-      } catch (e) {
-        container.innerHTML = "<p>Could not load news.</p>";
-      }
+  async function loadNews() {
+    const container = document.getElementById("news");
+    container.innerHTML = "<p>Loading latest news...</p>";
+    try {
+      const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
+      const data = await res.json();
+      container.innerHTML = "";
+      data.results.slice(0,5).forEach(item=>{
+        const div=document.createElement("div");
+        div.className="article";
+        const img=item.image_url ? `<img src="${item.image_url}" alt="${item.title}">` : "";
+        div.innerHTML=`${img}<h2>${item.title}</h2><p>${item.description||""}</p><a href="${item.link}" target="_blank">Read more →</a>`;
+        container.appendChild(div);
+      });
+    } catch(e){
+      container.innerHTML="<p>Could not load news. Try again later.</p>";
     }
-    loadNews();
-    setInterval(loadNews, 300000); // refresh every 5 minutes
+  }
+  loadNews();
   </script>
 </body>
 </html>
