@@ -3,66 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Smaseko News – A reliable source for trending stories, tech, entertainment, and world updates.">
+  <meta name="google-adsense-account" content="ca-pub-5865490092435135">
   <title>About | Smaseko News</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5865490092435135" crossorigin="anonymous"></script>
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #222;
-      color: white;
-      padding: 1.5em;
-      text-align: center;
-      font-size: 1.5em;
-    }
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      line-height: 1.6;
-    }
-    h1 {
-      color: #007bff;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #666;
-    }
+    body { font-family: Arial, sans-serif; margin:0; background:#f4f4f4; color:#333; }
+    nav { background:#111; padding:15px; text-align:center; }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    header { background:#333; color:white; padding:50px 0; text-align:center; }
+    .content { max-width:800px; margin:20px auto; padding:15px; background:white; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    footer { background:#111; color:white; text-align:center; padding:15px; margin-top:20px; }
+    .donate { text-align:center; margin:30px 0; }
+    .donate button { background:#ffdd00; color:#111; font-weight:bold; padding:12px 20px; border:none; border-radius:8px; cursor:pointer; }
+    .donate button:hover { background:#ffc107; }
   </style>
 </head>
 <body>
-  <header>About Smaseko News</header>
-  <main>
-    <h1>Welcome to Smaseko News</h1>
-    <p>Smaseko News is a one-page digital news platform built to deliver the latest updates in technology, entertainment, lifestyle, and global affairs — all in one clean and simple layout.</p>
 
-    <p>Our goal is to make news accessible, fast, and enjoyable to read. We curate stories from trusted public sources, keeping readers informed with real-time headlines.</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-    <h2>Our Mission</h2>
-    <p>To provide reliable and easy-to-read news while supporting independent creators through transparent content and community contributions.</p>
+  <header>
+    <h1>About Smaseko News</h1>
+  </header>
 
-    <h2>Support Us</h2>
-    <p>If you enjoy our content, you can support our work by <a href="https://www.buymeacoffee.com/smaseko">buying us a coffee ☕</a>. Your support helps us keep Smaseko News free and regularly updated.</p>
+  <div class="content">
+    <p>Welcome to Smaseko News! This is a simple one-page news website created to provide the latest headlines using the NewsData.io API.</p>
+    
+    <p>Our goal is to deliver fresh news quickly and provide readers with a simple, clean interface.</p>
 
-    <h2>Contact</h2>
-    <p>Got feedback or suggestions? Email us at <strong>sibonelomaseko509@gmail.com</strong>.</p>
-  </main>
+    <!-- AdSense Ad Slot -->
+    <div style="margin:20px 0; text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5865490092435135"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-  <footer>© 2025 Smaseko News. All rights reserved.</footer>
+    <!-- Donation Section -->
+    <div class="donate">
+      <p>❤️ Enjoying this site? Support my work!</p>
+      <a href="https://www.buymeacoffee.com/smasekos" target="_blank">
+        <button>☕ Buy Me a Coffee</button>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Smaseko | Built with ❤️ and Termux</p>
+  </footer>
+
 </body>
 </html>
