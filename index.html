@@ -1,56 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily News Hub</title>
 
-  <!-- Google AdSense -->
+  <!-- ✅ Google AdSense verification -->
+  <meta name="google-adsense-account" content="ca-pub-5865490092435135">
+
+  <!-- ✅ Google AdSense script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5865490092435135"
           crossorigin="anonymous"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <style>
-    body { font-family: 'Roboto', Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
-    header { background: #111; color: #fff; padding: 20px; text-align: center; }
-    header h1 { font-size: 2em; margin: 0; }
-    header p { margin: 5px 0 0 0; font-size: 1em; }
-    main { max-width: 900px; margin: 20px auto; padding: 10px; }
-    .article-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 15px; margin-bottom: 20px; transition: transform 0.2s; }
-    .article-card img { max-width: 100%; border-radius: 8px; margin-bottom: 10px; height: auto; }
-    .article-card h2 { font-size: 1.5em; color: #222; margin-bottom: 10px; }
-    .article-card p { color: #555; margin-bottom: 10px; }
-    .article-card a { color: #007bff; text-decoration: none; font-weight: bold; }
-    .article-card:hover { transform: scale(1.02); }
-    footer { text-align: center; padding: 15px; color: #555; font-size: 0.9em; }
-    section#about { margin: 30px auto; padding: 20px; background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
-    section#about h2 { text-align:center; color:#222; }
-    section#about p { text-align:center; color:#555; font-size:1em; }
-    section#about div { text-align:center; margin-top:15px; }
-    @media screen and (max-width: 600px) {
-      header h1 { font-size: 1.5em; }
-      header p { font-size: 0.9em; }
-      .article-card h2 { font-size: 1.2em; }
-      main { padding: 5px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem;
+      background: #111;
+    }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #news {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    .article {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .article h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .article a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .coffee {
+      text-align: center;
+      margin: 30px 0;
+    }
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Header -->
-<header>
-  <nav style="display:flex;justify-content:center;gap:20px;align-items:center;flex-wrap:wrap;padding:1rem;background:#111;">
-    <a href="index.html" style="color:#fff;text-decoration:none;font-weight:bold;">Home</a>
-    <a href="about.html" style="color:#fff;text-decoration:none;font-weight:bold;">About</a>
-    <a href="contact.html" style="color:#fff;text-decoration:none;font-weight:bold;">Contact</a>
-  </nav>
-</header>
-
-  <!-- Top AdSense Banner -->
-  <div style="text-align:center;margin:20px 0;">
+  <!-- 🔹 Top Ad placeholder -->
+  <div style="text-align:center;margin:15px 0;">
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-5865490092435135"
@@ -60,75 +87,43 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- About / Donations Section -->
-  <section id="about">
-    <h2>Support Daily News Hub ☕</h2>
-    <p>
-      Daily News Hub is a free news website that brings you the latest headlines every day.
-      If you enjoy our content and want to support our work, you can <strong>buy us a coffee</strong>!
-      Your donations help keep the site running and allow us to bring you more timely updates.
-    </p>
-    <div>
-      <a href="https://www.buymeacoffee.com/Smaseko-s" target="_blank">
-        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee">
-      </a>
-    </div>
-  </section>
+  <section id="news"></section>
 
-  <!-- Main content -->
-  <main>
-    <div id="news">
-      <h1 style="text-align:center;color:#222;">Latest News</h1>
-      <p style="text-align:center;color:#555;">Automatically loaded from NewsData.io</p>
-    </div>
+  <!-- 🔹 Donate Section -->
+  <div class="coffee">
+    <h3>Support the site ❤️</h3>
+    <a href="https://www.buymeacoffee.com/smaseko-s" target="_blank">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+           alt="Buy Me A Coffee" width="200">
+    </a>
+  </div>
 
-    <!-- Mid-page AdSense Banner -->
-    <div style="text-align:center;margin:20px 0;">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-5865490092435135"
-           data-ad-slot="0000000000"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </main>
+  <footer>© 2025 Smaseko-s News Hub</footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Daily News Hub</p>
-  </footer>
-
-  <!-- Live News Script with Auto-Refresh -->
   <script>
     async function loadNews() {
       const container = document.getElementById("news");
-      container.innerHTML = "<p style='text-align:center;'>Loading latest news...</p>";
+      container.innerHTML = "<p>Loading latest news...</p>";
       try {
         const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
         const data = await res.json();
         container.innerHTML = "";
-        data.results.slice(0,5).forEach(item => {
+        data.results.slice(0, 5).forEach(item => {
           const div = document.createElement("div");
-          div.className = "article-card";
+          div.className = "article";
           div.innerHTML = `
             <h2>${item.title}</h2>
-            ${item.image_url ? `<img src="${item.image_url}">` : ""}
             <p>${item.description || ""}</p>
             <a href="${item.link}" target="_blank">Read more →</a>
           `;
           container.appendChild(div);
         });
-      } catch(e){
-        container.innerHTML="<p style='text-align:center;color:red;'>Could not load news.</p>";
+      } catch (e) {
+        container.innerHTML = "<p>Could not load news.</p>";
       }
     }
-
-    // Initial load
     loadNews();
-    // Refresh every 5 minutes (300000 ms)
-    setInterval(loadNews, 300000);
+    setInterval(loadNews, 300000); // refresh every 5 minutes
   </script>
-
 </body>
 </html>
