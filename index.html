@@ -1,42 +1,205 @@
-<script>
-const API_KEY = "pub_f3ea4b0324044ea09a8e61d21fb993d7";
-const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en&category=top,technology,world`;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Latest news powered by NewsData.io API" />
+  <meta name="google-adsense-account" content="ca-pub-5865490092435135">
+  <title>L8ttest News Hub</title>
 
-async function loadPreview() {
-  const container = document.getElementById('preview') || document.getElementById('news');
-  if (!container) return;
+  <style>
+    :root {
+      --bg: #f2f4f8;
+      --text: #111827;
+      --card: #fff;
+      --accent: #2563eb;
+    }
+    body.dark {
+      --bg: #0f172a;
+      --text: #e5e7eb;
+      --card: #1e293b;
+      --accent: #60a5fa;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: 0.3s ease background, 0.3s ease color;
+    }
+    header {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    #controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--card);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .category-buttons button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: 0.2s;
+    }
+    .category-buttons button:hover {
+      background: #1d4ed8;
+    }
+    #toggleDark {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: 0.3s;
+    }
+    #toggleDark:hover {
+      background: var(--accent);
+      color: white;
+    }
+    #news-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .news-card {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-4px);
+    }
+    .news-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .news-content {
+      padding: 15px;
+    }
+    .news-content h3 {
+      margin: 0 0 8px;
+      font-size: 1.1em;
+    }
+    .news-content p {
+      font-size: 0.9em;
+      line-height: 1.4em;
+      color: var(--text);
+      opacity: 0.85;
+    }
+    .news-content a {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .news-content a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
 
-  container.innerHTML = '<p>Loading trending news...</p>';
+<body>
+  <header>📰 L8ttest News Hub</header>
 
-  try {
-    const res = await fetch(URL);
-    const data = await res.json();
+  <div id="controls">
+    <div class="category-buttons">
+      <button onclick="loadNews('top')">Top</button>
+      <button onclick="loadNews('technology')">Tech</button>
+      <button onclick="loadNews('sports')">Sports</button>
+      <button onclick="loadNews('business')">Business</button>
+      <button onclick="loadNews('entertainment')">Entertainment</button>
+      <button onclick="loadNews('health')">Health</button>
+      <button onclick="loadNews('science')">Science</button>
+      <button onclick="loadNews('world')">World</button>
+    </div>
+    <button id="toggleDark" onclick="toggleDarkMode()">🌗 Dark Mode</button>
+  </div>
 
-    if (!data.results || data.results.length === 0) {
-      container.innerHTML = "<p>No news found right now. Please check back later.</p>";
-      return;
+  <div id="news-container">
+    <p style="text-align:center;">Loading news...</p>
+  </div>
+
+  <footer>
+    © 2025 L8ttest News | Powered by NewsData.io
+  </footer>
+
+  <script>
+    const apiKey = "pub_f3ea4b0324044ea09a8e61d21fb993d7";
+
+    async function loadNews(category = "top") {
+      const container = document.getElementById("news-container");
+      container.innerHTML = `<p style="text-align:center;">Fetching ${category} news...</p>`;
+
+      try {
+        const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&language=en&category=${category}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.status !== "success" || !data.results?.length) {
+          container.innerHTML = "<p style='text-align:center;'>⚠️ No news found for this category.</p>";
+          return;
+        }
+
+        container.innerHTML = data.results.slice(0, 12).map(article => `
+          <div class="news-card">
+            <img class="news-image" 
+                 src="${article.image_url || 'https://via.placeholder.com/400x200?text=No+Image'}" 
+                 alt="${article.title}">
+            <div class="news-content">
+              <h3>${article.title}</h3>
+              <p>${article.description || 'No description available.'}</p>
+              <a href="${article.link}" target="_blank">Read full article →</a>
+            </div>
+          </div>
+        `).join("");
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = "<p style='text-align:center;'>🚫 Error loading news. Please try again later.</p>";
+      }
     }
 
-    container.innerHTML = '';
-    data.results.slice(0, 8).forEach(article => {
-      const img = article.image_url || "https://via.placeholder.com/800x400?text=No+Image+Available";
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.style = "background:#fff;padding:1rem;margin:1rem 0;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);";
-      card.innerHTML = `
-        <img src="${img}" alt="${article.title}" style="width:100%;border-radius:10px;">
-        <h3 style="margin:10px 0;">${article.title}</h3>
-        <p>${article.description || ''}</p>
-        <a href="${article.link}" target="_blank" style="color:#007BFF;font-weight:bold;">Read more →</a>
-      `;
-      container.appendChild(card);
-    });
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const btn = document.getElementById("toggleDark");
+      btn.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌗 Dark Mode";
+    }
 
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = '<p>⚠️ Unable to load news. Try again later.</p>';
-  }
-}
-
-loadPreview();
-</script>
+    loadNews();
+  </script>
+</body>
+</html>
