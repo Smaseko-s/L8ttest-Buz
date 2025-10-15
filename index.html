@@ -1,55 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-5865490092435135" />
-  <meta name="description" content="Stay updated with the latest South African and global news. L8ttest-Buz brings trending stories, tips, and updates daily." />
-  <title>L8ttest-Buz | Latest Updates & Trends</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Poppins', sans-serif; margin: 0; background: #f4f6fa; color: #333; }
-    header { background: #111; color: white; padding: 2rem 1rem; text-align: center; }
-    header h1 { margin: 0; font-size: 2rem; }
-    nav { background: #222; display: flex; justify-content: center; gap: 1rem; padding: 1rem; }
-    nav a { color: white; text-decoration: none; font-weight: 600; }
-    nav a:hover { color: #f0a500; }
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    .featured { text-align: center; }
-    .featured img { max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-    .news-preview { display: grid; gap: 1.5rem; margin-top: 2rem; }
-    .card { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 1rem; }
-    .card h3 { margin-top: 0; }
-    .ads { text-align: center; margin: 2rem 0; background: #fff3cd; padding: 1rem; border-radius: 8px; }
-    footer { background: #111; color: white; text-align: center; padding: 2rem; margin-top: 2rem; }
-  </style>
-</head>
-<body>
+<script>
+const API_KEY = "pub_f3ea4b0324044ea09a8e61d21fb993d7";
+const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en&category=top,technology,world`;
 
-<header>
-  <h1>Welcome to L8ttest-Buz 📰</h1>
-  <p>Your daily source for trends, stories, and updates</p>
-</header>
+async function loadPreview() {
+  const container = document.getElementById('preview') || document.getElementById('news');
+  if (!container) return;
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="news.html">News</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a>
-</nav>
+  container.innerHTML = '<p>Loading trending news...</p>';
 
-<section class="featured">
-  <h2>Featured Story</h2>
-  <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?w=1200" alt="Featured news">
-  <p>Get the latest and most engaging stories curated for you. Explore trends that matter — from lifestyle to tech, finance, and beyond.</p>
-</section>
+  try {
+    const res = await fetch(URL);
+    const data = await res.json();
 
-<div class="ads">
-  <p><strong>Ad space available here</strong></p>
-  <p>(Google AdSense will appear here once approved)</p>
-</div>
+    if (!data.results || data.results.length === 0) {
+      container.innerHTML = "<p>No news found right now. Please check back later.</p>";
+      return;
+    }
 
-<section>
-  <h2>Recent Highlights</h2>
-  <
+    container.innerHTML = '';
+    data.results.slice(0, 8).forEach(article => {
+      const img = article.image_url || "https://via.placeholder.com/800x400?text=No+Image+Available";
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style = "background:#fff;padding:1rem;margin:1rem 0;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);";
+      card.innerHTML = `
+        <img src="${img}" alt="${article.title}" style="width:100%;border-radius:10px;">
+        <h3 style="margin:10px 0;">${article.title}</h3>
+        <p>${article.description || ''}</p>
+        <a href="${article.link}" target="_blank" style="color:#007BFF;font-weight:bold;">Read more →</a>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = '<p>⚠️ Unable to load news. Try again later.</p>';
+  }
+}
+
+loadPreview();
+</script>
