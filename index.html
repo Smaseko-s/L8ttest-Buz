@@ -1,64 +1,64 @@
-# paste the full code, save, exit
-git add index.html
-git commit -m "Full homepage with navbar, news, donation, and AdSense placeholder"
-git push<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smaseko Media News</title>
-  
+  <title>Smaseko Media</title>
+
   <!-- AdSense Verification -->
   <meta name="google-adsense-account" content="ca-pub-5865490092435135">
-  
+
   <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5865490092435135"
      crossorigin="anonymous"></script>
-  
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
-    nav { background: #222; padding: 10px 20px; }
-    nav ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
-    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
-    nav ul li a:hover { text-decoration: underline; }
-    .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-    .article { background: #fff; padding: 15px; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    .article img { max-width: 100%; height: auto; margin-bottom: 10px; }
-    h1, h2 { color: #222; }
-    .donate { display: block; margin: 20px 0; text-align: center; }
-    footer { text-align: center; padding: 15px; background: #222; color: #fff; margin-top: 40px; }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; scroll-behavior:smooth; }
+    nav { background:#222; padding:10px 20px; position:sticky; top:0; z-index:1000; }
+    nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
+    nav ul li a { color:#fff; text-decoration:none; font-weight:bold; }
+    nav ul li a:hover { text-decoration:underline; }
+    .container { max-width:900px; margin:20px auto; padding:0 15px; }
+    h1,h2 { color:#222; }
+    .donate { display:block; margin:20px 0; text-align:center; }
+    footer { text-align:center; padding:15px; background:#222; color:#fff; margin-top:40px; }
+    .ads-container { text-align:center; margin:20px auto; }
+    .article { background:#fff; padding:15px; margin-bottom:15px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+    .article img { max-width:100%; height:auto; margin-bottom:10px; }
+    form { display:flex; flex-direction:column; gap:10px; }
+    input, textarea { padding:8px; width:100%; border:1px solid #ccc; border-radius:4px; }
+    button { padding:10px; border:none; background:#222; color:#fff; font-weight:bold; border-radius:4px; cursor:pointer; }
+    button:hover { background:#444; }
+    section { margin-bottom:50px; }
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#privacy">Privacy</a></li>
     </ul>
   </nav>
 
-  <div class="container">
-    <h1>Latest News</h1>
-    
-    <!-- AdSense Placeholder -->
-    <div style="text-align:center; margin:20px auto;">
+  <!-- Home Section -->
+  <section class="container" id="home">
+    <h1>Welcome to Smaseko Media</h1>
+    <p>Your source for the latest news and updates. Explore trending articles, top stories, and stay informed.</p>
+
+    <!-- AdSense Block -->
+    <div class="ads-container">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-5865490092435135"
-           data-ad-slot="1234567890"
+           data-ad-slot="1111111111"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-
-    <!-- News Section -->
-    <div id="news">
-      <p>Loading latest news...</p>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- Donate Button -->
@@ -67,23 +67,79 @@ git push<!DOCTYPE html>
         <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee">
       </a>
     </div>
-  </div>
+  </section>
 
-  <footer>
-    &copy; 2025 Smaseko Media | <a href="privacy.html" style="color:#fff;">Privacy Policy</a>
+  <!-- News Section -->
+  <section class="container" id="news">
+    <h1>Latest News</h1>
+
+    <!-- AdSense Block -->
+    <div class="ads-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5865490092435135"
+           data-ad-slot="2222222222"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div id="news-content">
+      <p>Loading latest news...</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="container" id="about">
+    <h1>About Smaseko Media</h1>
+    <p>Smaseko Media is dedicated to bringing you timely and accurate news updates from around the world. Our mission is to keep you informed and engaged with relevant stories in politics, sports, lifestyle, and more.</p>
+
+    <!-- AdSense Block -->
+    <div class="ads-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5865490092435135"
+           data-ad-slot="3333333333"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact">
+    <h1>Contact Us</h1>
+    <form onsubmit="alert('Message sent!'); return false;">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="container" id="privacy">
+    <h1>Privacy Policy & Terms</h1>
+    <p>This website uses Google AdSense and other services. By using our site, you agree to our terms and privacy practices. We do not share your personal information and comply with all applicable regulations.</p>
+    <p>For donations via Buy Me a Coffee, we only receive the information needed to process your payment through their platform.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    &copy; 2025 Smaseko Media
   </footer>
 
-  <!-- NewsData API Script -->
+  <!-- NewsData API Script with Inline Ads -->
   <script>
     async function loadNews() {
-      const container = document.getElementById("news");
+      const container = document.getElementById("news-content");
       container.innerHTML = "<p>Loading latest news...</p>";
       try {
         const res = await fetch("https://newsdata.io/api/1/news?apikey=pub_f3ea4b0324044ea09a8e61d21fb993d7&country=us&language=en");
         const data = await res.json();
         container.innerHTML = "";
         if (data.results && data.results.length > 0) {
-          data.results.slice(0,5).forEach(item => {
+          data.results.slice(0,10).forEach((item,index) => {
             const div = document.createElement("div");
             div.className = "article";
             div.innerHTML = `
@@ -93,6 +149,22 @@ git push<!DOCTYPE html>
               <a href="${item.link}" target="_blank">Read more →</a>
             `;
             container.appendChild(div);
+
+            // Insert inline AdSense every 3 articles
+            if ((index+1) % 3 === 0) {
+              const adDiv = document.createElement("div");
+              adDiv.className = "ads-container";
+              adDiv.innerHTML = `
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5865490092435135"
+                     data-ad-slot="4444444444"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+              `;
+              container.appendChild(adDiv);
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            }
           });
         } else {
           container.innerHTML = "<p>No news available right now.</p>";
@@ -104,5 +176,6 @@ git push<!DOCTYPE html>
     }
     loadNews();
   </script>
+
 </body>
 </html>
